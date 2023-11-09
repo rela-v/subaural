@@ -1,6 +1,12 @@
 import Versions from './components/Versions'
 import icons from './assets/icons.svg'
 
+const acceptFiles = (inp) => {
+  window.electron.ipcRenderer.invoke('electron:ping', inp).then(re => {
+    console.log('pong received!')
+  })
+}
+acceptFiles('prepong')
 function App(): JSX.Element {
   return (
     <div className="container">
